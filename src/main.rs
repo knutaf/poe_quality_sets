@@ -77,7 +77,15 @@ fn main() {
         s.trim().parse::<u32>().expect("failed to parse")
     }).collect();
 
-    println!("{:?}", get_good_sets(40, nums));
+    if !nums.is_empty() {
+        println!("{:?}", get_good_sets(40, nums));
+    } else {
+        println!("Usage: {} quality_1 quality_2 quality_3 etc.", env::args().nth(0).expect("need exe name"));
+        println!("  Input all your items' quality, and the tool prints out which order you should");
+        println!("  sell them in, to get the most 40% quality sets possible without wasting any.");
+        println!("");
+        println!("  There may be some left over after, which you can just keep for next time.");
+    }
 }
 
 #[cfg(test)]
